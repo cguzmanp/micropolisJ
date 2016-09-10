@@ -901,7 +901,7 @@ public class Micropolis
 			floodCnt--;
 		}
 
-		final int [] DisChance = { 480, 240, 60 };
+		final int [] DisChance = { 720, 480, 240, 60, 10 };
 		if (noDisasters)
 			return;
 
@@ -1731,11 +1731,11 @@ public class Micropolis
 
 	/** Road/rail maintenance cost multiplier, for various difficulty settings.
 	 */
-	static final double [] RLevels = { 0.7, 0.9, 1.2 };
+	static final double [] RLevels = { 0.6, 0.7, 0.9, 1.2, 1.6 };
 
 	/** Tax income multiplier, for various difficulty settings.
 	 */
-	static final double [] FLevels = { 1.4, 1.2, 0.8 };
+	static final double [] FLevels = { 1.8, 1.4, 1.2, 0.8, 0.4 };
 
 	void collectTaxPartial()
 	{
@@ -2009,7 +2009,7 @@ public class Micropolis
 		simSpeed = Speed.valueOf(in.getAttributeValue(null, "simSpeed"));
 		XML_Helper.skipToEndElement(in);
 
-		if (gameLevel < 0 || gameLevel > 2) { gameLevel = 0; }
+		if (gameLevel < 0 || gameLevel > 4) { gameLevel = 0; }
 
 		resCap = false;
 		comCap = false;
@@ -2072,7 +2072,7 @@ public class Micropolis
 
 		if (cityTime < 0) { cityTime = 0; }
 		if (cityTax < 0 || cityTax > 20) { cityTax = 7; }
-		if (gameLevel < 0 || gameLevel > 2) { gameLevel = 0; }
+		if (gameLevel < 0 || gameLevel > 4) { gameLevel = 0; }
 		if (evaluation.cityClass < 0 || evaluation.cityClass > 5) { evaluation.cityClass = 0; }
 		if (evaluation.cityScore < 1 || evaluation.cityScore > 999) { evaluation.cityScore = 500; }
 
