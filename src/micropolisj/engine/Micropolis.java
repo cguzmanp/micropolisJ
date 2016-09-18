@@ -1281,6 +1281,9 @@ public class Micropolis
 		public int [] money = new int[240];
 		public int [] pollution = new int[240];
 		public int [] crime = new int[240];
+		public int [] approval = new int[240];
+		public int [] score = new int[240];
+		public int [] population = new int[240];
 		int resMax;
 		int comMax;
 		int indMax;
@@ -1643,6 +1646,9 @@ public class Micropolis
 			history.crime[i + 1] = history.crime[i];
 			history.pollution[i + 1] = history.pollution[i];
 			history.money[i + 1] = history.money[i];
+			history.approval[i + 1] = history.approval[i];
+			history.score[i + 1] = history.score[i];
+			history.population[i + 1] = history.population[i];
 		}
 
 		history.resMax = resMax;
@@ -1668,6 +1674,12 @@ public class Micropolis
 			moneyScaled = 255;
 		history.money[0] = moneyScaled;
 
+		history.approval[0] = evaluation.cityYes;
+		
+		history.score[0] = evaluation.cityScore;
+		
+		history.population[0] = evaluation.cityPop;
+		
 		history.cityTime = cityTime;
 
 		if (hospitalCount < resPop / 256)
@@ -1719,6 +1731,9 @@ public class Micropolis
 			history.crime[i + 1] = history.crime[i];
 			history.pollution[i + 1] = history.pollution[i];
 			history.money[i + 1] = history.money[i];
+			history.approval[i + 1] = history.approval[i];
+			history.score[i + 1] = history.score[i];
+			history.population[i + 1] = history.population[i];
 		}
 
 		history.res[120] = resPop / 8;
@@ -1727,6 +1742,9 @@ public class Micropolis
 		history.crime[120] = history.crime[0];
 		history.pollution[120] = history.pollution[0];
 		history.money[120] = history.money[0];
+		history.approval[120] = history.approval[0];
+		history.score[120] = history.score[0];
+		history.population[120] = history.population[0];
 	}
 
 	/** Road/rail maintenance cost multiplier, for various difficulty settings.
@@ -2327,6 +2345,15 @@ public class Micropolis
 			else if (tagName.equals("money-history")) {
 				loadHistoryArray_v2(history.money, in);
 			}
+			else if (tagName.equals("approval-history")) {
+				loadHistoryArray_v2(history.approval, in);
+			}
+			else if (tagName.equals("score-history")) {
+				loadHistoryArray_v2(history.score, in);
+			}
+			else if (tagName.equals("population-history")) {
+				loadHistoryArray_v2(history.population, in);
+			}
 			else if (tagName.equals("population")) {
 				resPop = Integer.parseInt(in.getAttributeValue(null, "resPop"));
 				comPop = Integer.parseInt(in.getAttributeValue(null, "comPop"));
@@ -2385,6 +2412,9 @@ public class Micropolis
 		loadHistoryArray_v1(history.crime, dis);
 		loadHistoryArray_v1(history.pollution, dis);
 		loadHistoryArray_v1(history.money, dis);
+		loadHistoryArray_v1(history.approval, dis);
+		loadHistoryArray_v1(history.score, dis);
+		loadHistoryArray_v1(history.population, dis);
 		loadMisc_v1(dis);
 		loadMap_v1(dis);
 		dis.close();
@@ -2417,6 +2447,9 @@ public class Micropolis
 		writeHistoryArray("crime-history", history.crime, out);
 		writeHistoryArray("pollution-history", history.pollution, out);
 		writeHistoryArray("money-history", history.money, out);
+		writeHistoryArray("approval-history", history.approval, out);
+		writeHistoryArray("score-history", history.score, out);
+		writeHistoryArray("population-history", history.population, out);
 		writeMisc(out);
 		writeMap(out);
 		out.writeEndElement(); //micropolis

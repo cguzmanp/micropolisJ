@@ -216,9 +216,9 @@ public class GraphsPane extends JPanel
 		case MONEY: return engine.history.money[pos];
 		case CRIME: return engine.history.crime[pos];
 		case POLLUTION: return engine.history.pollution[pos];
-		case APPROVAL: return engine.history.pollution[pos];
-		case SCORE: return engine.history.pollution[pos];
-		case POPULATION: return engine.history.pollution[pos];
+		case APPROVAL: return engine.history.approval[pos];
+		case SCORE: return engine.history.score[pos];
+		case POPULATION: return engine.history.population[pos];
 		default: throw new Error("unexpected");
 		}
 	}
