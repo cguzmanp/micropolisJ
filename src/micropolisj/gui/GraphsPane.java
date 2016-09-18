@@ -40,7 +40,10 @@ public class GraphsPane extends JPanel
 		INDPOP,
 		MONEY,
 		CRIME,
-		POLLUTION;
+		POLLUTION,
+		APPROVAL,
+		SCORE,
+		POPULATION;
 	}
 	EnumMap<GraphData,JToggleButton> dataBtns = new EnumMap<GraphData,JToggleButton>(GraphData.class);
 
@@ -74,7 +77,7 @@ public class GraphsPane extends JPanel
 
 		GridBagConstraints c = new GridBagConstraints();
 		c.gridx = c.gridy = 0;
-		c.gridwidth = 2;
+		c.gridwidth = 3;
 		c.fill = GridBagConstraints.BOTH;
 		c.insets = new Insets(1,1,1,1);
 		tenYearsBtn = new JToggleButton(strings.getString("ten_years"));
@@ -116,7 +119,17 @@ public class GraphsPane extends JPanel
 
 		c.gridy = 4;
 		toolsPane.add(makeDataBtn(GraphData.POLLUTION), c);
-
+		
+		c.gridx = 2;
+		c.gridy = 2;
+		toolsPane.add(makeDataBtn(GraphData.APPROVAL), c);
+		
+		c.gridy = 3;
+		toolsPane.add(makeDataBtn(GraphData.SCORE), c);
+		
+		c.gridy = 4;
+		toolsPane.add(makeDataBtn(GraphData.POPULATION), c);
+		
 		graphArea = new GraphArea();
 		b1.add(graphArea, BorderLayout.CENTER);
 
@@ -203,6 +216,9 @@ public class GraphsPane extends JPanel
 		case MONEY: return engine.history.money[pos];
 		case CRIME: return engine.history.crime[pos];
 		case POLLUTION: return engine.history.pollution[pos];
+		case APPROVAL: return engine.history.pollution[pos];
+		case SCORE: return engine.history.pollution[pos];
+		case POPULATION: return engine.history.pollution[pos];
 		default: throw new Error("unexpected");
 		}
 	}
